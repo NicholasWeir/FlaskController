@@ -1,0 +1,8 @@
+{
+    "device": "laser",
+    "commands": [
+        "LASER_ON\n",
+        "LASER_SET_CURRENT 5.0\n",
+        "LASER_OFF\n"
+    ]
+}

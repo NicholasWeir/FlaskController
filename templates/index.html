@@ -88,7 +88,7 @@
                 <button onclick="disconnectSerial('laser')">Disconnect</button>
                 <p>Status: <span id="laser-serial-status">{{ serial_info.laser.status }}</span></p>
 
-                <h3>Control</h3>
+                <h3>Predefined Control</h3>
                 <p>Laser Status: <span id="laser_status">{{ serial_info.laser.status }}</span></p>
                 <p>Current: <span id="laser_current">0.0</span> A</p>
                 <button onclick="controlDevice('laser', 'on')">Turn Laser On</button>
@@ -96,6 +96,11 @@
                 <br><br>
                 <input type="number" id="laser_current_input" placeholder="Set Laser Current (A)">
                 <button onclick="setLaserCurrent()">Set Laser Current</button>
+
+                <h3>Manual Command</h3>
+                <input type="text" id="laser_manual_command" placeholder="Enter manual command">
+                <button onclick="sendManualCommand('laser')">Send Command</button>
+                <p>Response: <span id="laser_manual_response"></span></p>
             </div>
 
             <!-- Motor Control -->
@@ -111,7 +116,7 @@
                 <button onclick="disconnectSerial('motor')">Disconnect</button>
                 <p>Status: <span id="motor-serial-status">{{ serial_info.motor.status }}</span></p>
 
-                <h3>Control</h3>
+                <h3>Predefined Control</h3>
                 <p>Motor Status: <span id="motor_status">{{ serial_info.motor.status }}</span></p>
                 <p>Speed: <span id="motor_speed">0</span> RPM</p>
                 <button onclick="controlDevice('motor', 'on')">Turn Motor On</button>
@@ -119,6 +124,21 @@
                 <br><br>
                 <input type="number" id="motor_speed_input" placeholder="Set Motor Speed (RPM)">
                 <button onclick="setMotorSpeed()">Set Motor Speed</button>
+
+                <h3>Manual Command</h3>
+                <input type="text" id="motor_manual_command" placeholder="Enter manual command">
+                <button onclick="sendManualCommand('motor')">Send Command</button>
+                <p>Response: <span id="motor_manual_response"></span></p>
+            </div>
+
+            <!-- JSON Upload for Device Setup -->
+            <div>
+                <h2>Upload JSON for Device Setup</h2>
+                <form id="upload-form" enctype="multipart/form-data">
+                    <input type="file" id="json-file" name="file" accept=".json">
+                    <button type="button" onclick="uploadJson()">Upload</button>
+                </form>
+                <p id="upload-status"></p>
             </div>
         </div>
     </div>
@@ -176,6 +196,38 @@
 
         function setMotorSpeed() {
             controlDevice('motor', 'set_speed');
+        }
+
+        function sendManualCommand(device) {
+            const commandInput = document.getElementById(`${device}_manual_command`);
+            const command = commandInput.value;
+
+            if (command) {
+                $.post('/manual_command', { device: device, command: command }, function(response) {
+                    document.getElementById(`${device}_manual_response`).innerText = response.response;
+                }).fail(function(xhr) {
+                    alert("Error: " + xhr.responseJSON.error);
+                });
+            } else {
+                alert("Please enter a command.");
+            }
+        }
+
+        function uploadJson() {
+            const formData = new FormData(document.getElementById('upload-form'));
+            $.ajax({
+                url: '/upload',
+                type: 'POST',
+                data: formData,
+                processData: false,
+                contentType: false,
+                success: function(response) {
+                    document.getElementById('upload-status').innerText = "Upload successful: " + JSON.stringify(response.responses);
+                },
+                error: function(xhr) {
+                    document.getElementById('upload-status').innerText = "Upload failed: " + xhr.responseJSON.error;
+                }
+            });
         }
     </script>
 </body>

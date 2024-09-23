@@ -1,0 +1,24 @@
+2024-09-23 10:45:52,525 - WARNING -  * Debugger is active!
+2024-09-23 10:45:52,529 - INFO -  * Debugger PIN: 244-641-176
+2024-09-23 10:45:52,619 - INFO -  * Detected change in 'C:\\Users\\1nich\\OneDrive\\Desktop\\flaskapp\\app.py', reloading
+2024-09-23 10:45:52,622 - INFO -  * Detected change in 'C:\\Users\\1nich\\OneDrive\\Desktop\\flaskapp\\app.py', reloading
+2024-09-23 10:45:54,621 - WARNING -  * Debugger is active!
+2024-09-23 10:45:54,624 - INFO -  * Debugger PIN: 244-641-176
+2024-09-23 10:45:56,508 - INFO - 127.0.0.1 - - [23/Sep/2024 10:45:56] "GET / HTTP/1.1" 200 -
+2024-09-23 10:45:56,542 - INFO - 127.0.0.1 - - [23/Sep/2024 10:45:56] "[36mGET /static/jquery-3.6.0.min.js HTTP/1.1[0m" 304 -
+2024-09-23 10:46:01,681 - INFO - Laser connected to loop://
+2024-09-23 10:46:01,689 - INFO - 127.0.0.1 - - [23/Sep/2024 10:46:01] "POST /connect HTTP/1.1" 200 -
+2024-09-23 10:46:22,627 - INFO - Laser connected to loop://
+2024-09-23 10:46:22,627 - INFO - 127.0.0.1 - - [23/Sep/2024 10:46:22] "POST /connect HTTP/1.1" 200 -
+2024-09-23 10:46:28,083 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-09-23 10:46:28,099 - INFO - [33mPress CTRL+C to quit[0m
+2024-09-23 10:46:28,099 - INFO -  * Restarting with watchdog (windowsapi)
+2024-09-23 10:46:28,319 - WARNING -  * Debugger is active!
+2024-09-23 10:46:28,319 - INFO -  * Debugger PIN: 244-641-176
+2024-09-23 10:47:35,694 - INFO - 127.0.0.1 - - [23/Sep/2024 10:47:35] "GET / HTTP/1.1" 200 -
+2024-09-23 10:47:35,726 - INFO - 127.0.0.1 - - [23/Sep/2024 10:47:35] "[36mGET /static/jquery-3.6.0.min.js HTTP/1.1[0m" 304 -
+2024-09-23 10:50:20,846 - INFO - 127.0.0.1 - - [23/Sep/2024 10:50:20] "GET / HTTP/1.1" 200 -
+2024-09-23 10:50:20,853 - INFO - 127.0.0.1 - - [23/Sep/2024 10:50:20] "[36mGET /static/jquery-3.6.0.min.js HTTP/1.1[0m" 304 -
+2024-09-23 10:50:48,597 - INFO - 127.0.0.1 - - [23/Sep/2024 10:50:48] "GET / HTTP/1.1" 200 -
+2024-09-23 10:50:48,604 - INFO - 127.0.0.1 - - [23/Sep/2024 10:50:48] "[36mGET /static/jquery-3.6.0.min.js HTTP/1.1[0m" 304 -
