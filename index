@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laser Control</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <h1>Laser Control</h1>
+    <p>Status: <span id="status">{{ laser_state.status }}</span></p>
+    <p>Current: <span id="current">{{ laser_state.current }}</span> A</p>
+
+    <button onclick="controlLaser('on')">Turn On</button>
+    <button onclick="controlLaser('off')">Turn Off</button>
+    <br><br>
+    <input type="number" id="current_input" placeholder="Set Current (A)">
+    <button onclick="setCurrent()">Set Current</button>
+
+    <script>
+        function controlLaser(action) {
+            $.post('/control', { action: action }, function(data) {
+                $('#status').text(data.status);
+                $('#current').text(data.current);
+            });
+        }
+
+        function setCurrent() {
+            var current = $('#current_input').val();
+            $.post('/control', { action: 'set_current', current: current }, function(data) {
+                $('#status').text(data.status);
+                $('#current').text(data.current);
+            });
+        }
+    </script>
+</body>
+</html>
